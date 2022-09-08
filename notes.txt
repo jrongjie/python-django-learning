@@ -1,0 +1,12 @@
+MODULE 1
+Will Learn
+    install python
+    basic python
+    into to commandline
+    install/activate virtual environment
+    install django
+    create django project/app
+    create django views
+    create + migrate django models
+    create django templates
+
