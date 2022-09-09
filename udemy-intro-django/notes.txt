@@ -1,5 +1,5 @@
 MODULE 1
-Will Learn
+1.1 Will Learn
     install python
     basic python
     into to commandline
@@ -9,4 +9,37 @@ Will Learn
     create django views
     create + migrate django models
     create django templates
+    create django url patterns
+    version control (git)
+    deploy django app to internet
 
+1.2 What is Python
+    python is a case-sensitive, general purpose OOP language
+    named after monty python
+
+1.4 The python IDLE (interactive development environment)
+    IDLE - used for learning and consists of two main windows (edit and shell window)
+
+1.5 Python Variables
+    var = value
+
+1.6 Python List
+1.7 Python Tuples
+
+1.8 What is a Class
+    OOPs - java, python, ruby
+    objects - instance (specimen) of a class
+    OOP allows you to divid complex problems into smaller sets by creating objects
+    objects have a state (properties) and behavious (actions)
+        software objects have state (ie. variables) and behaviors (methods/functions)
+            ex. lamp (object) has a state (on | off) and behaviour (switching on/off)
+    class is a code template used to create objects, classes are a way of grouping together related data and functions which act upon that data
+        like a data type, when an object of a data type is created, it's an instance of a class
+            ex. car class
+                car object - green ford mustang
+                car object - red toyota prius
+                car object - blue voltswagon golf
+
+1.9 Your first Python Program
+1.10 Generating Random Numbers
+1.11 Number Guessing Game
