@@ -1,4 +1,5 @@
-MODULE 1
+NOTES
+
 1.1 Will Learn
     install python
     basic python
@@ -20,12 +21,6 @@ MODULE 1
 1.4 The python IDLE (interactive development environment)
     IDLE - used for learning and consists of two main windows (edit and shell window)
 
-1.5 Python Variables
-    var = value
-
-1.6 Python List
-1.7 Python Tuples
-
 1.8 What is a Class
     OOPs - java, python, ruby
     objects - instance (specimen) of a class
@@ -40,6 +35,223 @@ MODULE 1
                 car object - red toyota prius
                 car object - blue voltswagon golf
 
-1.9 Your first Python Program
-1.10 Generating Random Numbers
-1.11 Number Guessing Game
+4.23 Django Architecture
+    MVC (model, view, controller)
+        URL patterns - takes the path of the request and determines which views should handle the request
+        Views - the logic layer of the app, takes a request and returns an HTTP response 
+        Models - if the view can use a defined model it'll use that to query the data
+        Templates - Once the view queries the data through a model, it'll display the data in a template.
+
+4.26 Verifying Python and Pip Installation
+    Pip is a python package installer/package management system (automatically installed with python v - 2.7.9+)
+        python3 --version
+        pip3 --version
+
+4.28 Installing Virtual Environment
+    isolated python environment that lets you use different package versions for various projects (also skips admin privilleges)
+
+    virtualenv - a tool that creates a python environment
+        python3 -m venv NAME (mac -- usually uses the name env/virt)
+        pip install virtualenv (windows)
+
+4.29 Creating and Activating a Virtual Environment
+    https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/
+    
+    activate environment > source virt/bin/activate
+    leave your virtual environment > deactivate
+
+    Confirm you’re in the virtual environment by checking the location of your Python interpreter > which python3
+
+4.30 Updating Pip
+    pip3 -V (check version)
+    pip3 install --update pip / python3 -m pip install --upgrade pip (update pip)
+
+4.31 Installing Django
+    pip3 install django (for most up-to-date version)
+    add requirements.txt file in the root folder > pip install -r requirements.txt (used for specific versions)
+
+    python3 -m django --version (check django version)
+
+5.33 Django App Vs Django Project
+    APP - 
+        1. a website application that does something (ex. login system)
+        2. apps can be used in multiple projects
+    PROJECT - 
+        1. a collection of configuration and apps for a website (ex. facebook)
+        2. can contain multiple apps
+
+5.34 Creating a Django Project
+    start virtual environment then use...
+        django-admin startproject NAME (adds the name twice, like DL)
+        django-admin startproject NAME . (just creates the main folder)
+            ^ tells the script to install Django in your current directory, this avoids the creation of an extra outer directory with the same name as the project directory, this can be renamed if created.
+
+5.35 Anatomy of a Django Project
+    MyList 
+        __init__.py - an empty file that tells python the directory should be considered a python package
+
+        settings.py - settings configuration for this project (databse type, timezone, etc.)
+
+        urls.py - the url declaration for your django project, like a postman. So when someone comes through your website and types in B2B.com, the url acts as a postman and collects that request and then looks for a matching address to deliver that request to. Also where you store the urlpatterns
+
+        wsgi.py - an entry-point for WSGI-compatible web servers to serve your project. the dev server that holds the project
+
+    manage.py - command line utility that allows you to interact with your django project. any command will need to be done through this file
+
+5.36 Starting a Django Development Server
+    python3 manage.py runserver PORT (default port is 8000)
+        migration issues are just some extra files that come when making a new project
+
+    CONTROL + C (stops dev server)
+
+5.37 What Are Migrations
+    migrations are ways of propogating changes to your model into your database schema.
+        models are sources of information about your data that is being stored, contains essential fields
+    migrations are designed to be mostly automatic, but are alike VCS for your database schema
+
+    Migrations Commands
+        migrate - applies and unapplies migrations
+        makemigrations - creates new migrations based on changes you make to your models
+        sqlmigrate - displays the SQL statements for a migration
+        showmigrations - lists a project's migrations and their status
+
+        python3 manage.py showmigrations (no server active)
+
+5.38 Installing a Django App
+    django-admin startapp NAME 
+        by convention app names are plural (also cannot contain dashes)
+        avoid naming apps after built-in python or django components
+        apps should be made in the same directory as the manage.py
+
+    to activate app so the project is aware of its existance, add it to the list of INSTALLED_APPS inside settings.py file. This allows django to keep track of the app and let you do stuff with the app in the project like creating tables, etc..
+
+5.39 Anatomy of a Django App
+    todoList
+        migrations - contain all the database migrations in the app, tracks the model changes and syncs it to the database
+        
+        __init__.py - empty file that tells python the directory is a python package 
+
+        admin.py - reister the models here, so they show up in the admin site
+
+        apps.py - configuration file for the app, attributes/metadata
+
+        models.py - models for your app. contains fields and behaviour about your app data
+
+        tests.py - where you add tests for your app 
+
+        views.py - 
+    
+    db.sqlite3 - the default database file
+
+6.40 Project Mockup Design
+    Saves time to create HTML and other static files
+
+6.41 Django Admin and Superuser
+    superuser is used to manage the django admin page.
+    python3 manage.py createsuperuser (create)
+        start server > go to page and add "/admin"
+
+6.42 Templates
+    a template contains static parts of a desired HTML output and has some special syntax for dynamic content
+        special template tags {% tag %}
+        special template variables {{ variable }}
+        template variable filters {{ variable | filter }}
+    app directory > templates > APP_DIRECTORY_NAME > add index.html 
+        (or app directory) > static > APP_DIRECTORY_NAME > add frameworks/styles.css
+    django cannot use non-integrated static html files
+
+6.43 What Are Views
+    a python function that takes a web request and returns a web response.
+        This response can be the HTML contents of a webpage, a redirect, or a 404 errort, etc...
+     the view itself contains whatever arbitrary logic necessary to return that response
+
+    this code can live anywhere you want, as long as it's on your Python path. For the sake of putting code somewhere, the convention is to put views in a file called views.py, placed in your project/application directory
+    
+    Follows the syntax of - 
+    def NAME(request):
+        return render(request, 'ADDRESS_OF_NAME')
+
+6.44 URL and URL Patterns
+    URL patterns include the path of the URL request and where to send it
+    URL resolver - is like a postman figuring out where a package is supposed to go and how to get there
+
+    Follows the syntax of - 
+        path('admin/', admin.site.urls),
+        path('', include('todoList.urls')) -- empty quotes signify index
+    This is one of the first things you want to do in a project, is set the paths
+    Always restart your development server each time you add a new file to your project or app
+
+    The index view function will render the index.html template when a request is made to 127.0.0.1:8800
+
+6.45 Accessing Static Files
+    {% load static %} -- included at the top of the html file, and tells django to get access to the file
+        {% static 'FILE_PATH' %} -- loads in static files like .css
+
+7.46 What are Django Models
+    django models are python classes that allow us to save data inside a database, and is the single source of information about your data
+        each object is a row in a table
+        contains the essential files and behaviors of the data you are storing
+        each model maps to a single database table
+        each model is a python class that subclasses django.db.models.Model
+            each attribute of the model represents a database field
+
+        For Example:
+            from django.db import models
+                class Person(models.Model):
+                    first_name = models.CharField(max_length=30)
+                    last_name = models.CharField(max_length=30)
+
+            (will create:)
+
+            CREATE TABLE myapp_person(
+                "id" serial NOT NULL PRIMARY KEY,
+                "first_name" varchar(30) NOT NULL,
+                "last_name" varchar(30) NOT NULL
+            );
+
+7.48 Migrating Models
+    python3 manage.py makemigrations (creates the migration file)
+    python3 manage.py migrate (creates the table inside the database with the field you have specificed in the model)
+
+    This does not register the tables in the django /admin pannel
+
+7.49 Adding Model to Admin Site
+    in the admin.py of the project add in
+        from .models import todoList
+        admin.site.register(todoList)
+
+9.66 Getting Form to Capture Data From Text Input
+    view decorators can be used to restrict access to certain views. Django comes with some built-in decorators (ex. login_required, require_POST).
+        the require_POST restrict access to the addTodoItem view by allowing POST only
+
+9.67 Adding Form to Template and View
+
+9.68 Adding Form Input to Database
+    {% csrf_token %} -- prevents csrf
+        CSRF - (cross site request forgery) aka one-click attack or session writting. A malicious attack or exploit of a website where unauthorized commands are transmitted from a user that the web application trusts.
+
+
+
+9.69 Creating a View for Completed Items
+
+
+9.70 Creating a View to Delete All Completed Items
+
+
+9.71 Creating a View Function to Remove All Items From Database
+
+
+9.72 Pushing Updates to Version control
+
+
+10.74 Pt1 - deploying your app to the internet 
+
+
+10.75 Pt2 - deploying your app to the internet 
+
+
+10.76 Pt3 - deploying your app to the internet 
+
+
+10.77 Project Source Code
+
