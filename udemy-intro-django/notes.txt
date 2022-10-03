@@ -230,28 +230,6 @@ NOTES
     {% csrf_token %} -- prevents csrf
         CSRF - (cross site request forgery) aka one-click attack or session writting. A malicious attack or exploit of a website where unauthorized commands are transmitted from a user that the web application trusts.
 
-
-
-9.69 Creating a View for Completed Items
-
-
-9.70 Creating a View to Delete All Completed Items
-
-
-9.71 Creating a View Function to Remove All Items From Database
-
-
-9.72 Pushing Updates to Version control
-
-
 10.74 Pt1 - deploying your app to the internet 
-
-
-10.75 Pt2 - deploying your app to the internet 
-
-
-10.76 Pt3 - deploying your app to the internet 
-
-
-10.77 Project Source Code
-
+    www.pythonanywhere.com (host app)
+        create account - has free beginner account
